@@ -2,3 +2,4 @@
 chromedriver.exe
 *.suo
 *.log
+*.json
