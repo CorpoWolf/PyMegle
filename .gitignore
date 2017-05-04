@@ -1,1 +1,4 @@
 *.sqlite
+chromedriver.exe
+*.suo
+*.log
