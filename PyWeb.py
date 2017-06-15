@@ -4,17 +4,42 @@ chromedriver for gui view, phantomjs for ghost view.
 '''
 
 import selenium.webdriver #Imports module
+import time #Imports time
 
-driver = selenium.webdriver.Chrome() #Opens chromium browser
-driver.get('https://www.omegle.com') #Goes to this site
-print(driver.title) #prints website title to console.
+while True:
+    EngineChoice = input('Would you like a visual of the bot? (Y/N): ')
+    YN = (EngineChoice.lower())
+    if YN == ('y'):
+        break
+    elif YN == ('n'):
+        break
+    else:
+        print('Try again')
+#A while loop to make sure the user enters in a correct character.
 
-A = input("What common interest are you looking for? ") #Has the user type an interest.
-IE = driver.find_element_by_class_name('newtopicinput') #Takes the class used for user input.
-IE.send_keys(A + ",") #Creates user input.
+if YN == ('y'):
+    while True:
+        VarChoice = input('Would you like Firefox or Chrome?: (F/C)')
+        FC = (VarChoice.lower())
+        if FC == ('f'):
+            WebVar = selenium.webdriver.Firefox()
+            break
+        elif FC == ('c'):
+            WebVar = selenium.webdriver.Chrome()
+            break
+        else:
+            print('Try again')
+else:
+    WebVar = selenium.webdriver.PhantomJS()
+#The final task before opening a webdriver.
 
-driver.find_element_by_xpath("""//*[@id="textbtn"]""").click() #Click a button.
+Interest = input("What is a common interest you're looking for?: ")
+WebVar.get('https://www.omegle.com')
+print(WebVar.title)
+WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]').click()
 
-B = input("What would you like to say? ") #Has the user type an interest.
-BIE = driver.find_element_by_xpath('/html/body/div[7]/div/div/div[2]/table/tbody/tr/td[2]/div/textarea') #Takes the class used for user input.
-BIE.send_keys(B + ".")
+Send = WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]')
+Send.send_keys(Interest + ',')
+
+WebVar.find_element_by_xpath('//*[@id="textbtn"]').click()
+print(WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div'))
