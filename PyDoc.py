@@ -1,5 +1,5 @@
 ﻿'''
-    Reason to use Selenium of the build in webscrape module "urllib.request" is Selenium uses web engine which can render JavaScript webpages.
+    Reason to use Selenium over the webscrape module "urllib.request" is because Selenium uses web engine which can render JavaScript webpages.
 '''
 import selenium.webdriver
 #Selenium is a 3rd party module installed through the command prompt by typing "pip install selenium"
