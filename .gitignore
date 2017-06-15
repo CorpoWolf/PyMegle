@@ -3,3 +3,4 @@ chromedriver.exe
 *.suo
 *.log
 *.json
+*.exe

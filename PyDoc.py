@@ -1,13 +1,21 @@
-﻿import urllib.request #Imports module urllib.request.
-import re #Imports module re.
- 
-html = urllib.request.urlopen("https://www.omegle.com") #Requests info from "website"
-scan = str(html.read()) #Processes the information
-Title = str(scan.split("<title>")[1]).split("</title>")[0] #Takes post"<title>" & pre"</title>"
-Title2 = re.findall(r'<title>(.*?)</title>',str(scan)) #Looks for Everything in between <title> & </title>
+﻿'''
+    Reason to use Selenium of the build in webscrape module "urllib.request" is Selenium uses web engine which can render JavaScript webpages.
+'''
+import selenium.webdriver
+#Selenium is a 3rd party module installed through the command prompt by typing "pip install selenium"
+#Selenium.webdriver is what I call a "sub-module" which is installed with selenium
 
-print(Title) #Prints "Title"
-print(Title2) #Prints "Title2"
- 
-if 'What do you wanna talk about?' in scan: #Checks for specific text
-    print('yep') #Prints 'yep'
+WebVar = selenium.webdriver.Chrome()
+#WebVar is the variable we assigned to selenium.webdrive.Chrome
+#Chrome is the web engine being used and needs to be installed from https://sites.google.com/a/chromium.org/chromedriver/downloads
+
+WebVar2 = selenium.webdriver.PhantomJS()
+#Another example using a seperate web engine called PhatomJS which can be installed from http://phantomjs.org/
+#PhantomJS unlike Chromedriver is a "HEADLESS" webbrowser meaning it will not display anything.
+#Chrome is developing a headless webbrowser of their own now.
+
+WebVar.get('https://website.com')
+#This is function that can recieve information from a website.
+
+print(WebVar.title)
+#This will print the title header of a website that our variable has obtained.

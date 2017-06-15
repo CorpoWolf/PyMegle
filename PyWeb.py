@@ -1,5 +1,6 @@
 '''
 View the coding live on Twitch @ https://www.twitch.tv/gmangavin and look at the github @ https://github.com/gmangavin/PyScrape
+chromedriver for gui view, phantomjs for ghost view.
 '''
 
 import selenium.webdriver #Imports module
