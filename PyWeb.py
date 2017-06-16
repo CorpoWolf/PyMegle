@@ -6,32 +6,34 @@ chromedriver for gui view, phantomjs for ghost view.
 import selenium.webdriver #Imports module
 import time #Imports time
 
+N = False
 while True:
-    EngineChoice = input('Would you like a visual of the bot? (Y/N): ')
-    YN = (EngineChoice.lower())
-    if YN == ('y'):
-        break
-    elif YN == ('n'):
+    if N == True:
         break
     else:
-        print('Try again')
-#A while loop to make sure the user enters in a correct character.
-
-if YN == ('y'):
-    while True:
-        VarChoice = input('Would you like Firefox or Chrome?: (F/C)')
-        FC = (VarChoice.lower())
-        if FC == ('f'):
-            WebVar = selenium.webdriver.Firefox()
-            break
-        elif FC == ('c'):
-            WebVar = selenium.webdriver.Chrome()
+        EngineChoice = input('Would you like a visual of the bot? (Y/N): ')
+        YN = (EngineChoice.lower())
+        if YN == ('y'):
+            N = True
+            while True:
+                VarChoice = input('Would you like Firefox or Chrome?: (F/C)')
+                FC = (VarChoice.lower())
+                if FC == ('f'):
+                    WebVar = selenium.webdriver.Firefox()
+                    break
+                elif FC == ('c'):
+                    WebVar = selenium.webdriver.Chrome()
+                    break
+                else:
+                    print('Try again')
+        elif YN == ('n'):
+            WebVar = selenium.webdriver.PhantomJS()
+            N = True
             break
         else:
             print('Try again')
-else:
-    WebVar = selenium.webdriver.PhantomJS()
-#The final task before opening a webdriver.
+#A while loop to make sure the user enters in a correct character.
+#Allows the user to choose which web driver they want to use.
 
 Interest = input("What is a common interest you're looking for?: ")
 WebVar.get('https://www.omegle.com')
