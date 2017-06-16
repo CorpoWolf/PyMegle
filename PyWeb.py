@@ -7,31 +7,26 @@ import selenium.webdriver #Imports module
 import time #Imports time
 
 N = False
-while True:
-    if N == True:
-        break
+while N == False:
+    EngineChoice = input('Would you like a visual of the bot? (Y/N): ')
+    YN = (EngineChoice.lower())
+    if YN == ('y'):
+        while N == False:
+            VarChoice = input('Would you like Firefox or Chrome?: (F/C)')
+            FC = (VarChoice.lower())
+            if FC == ('f'):
+                WebVar = selenium.webdriver.Firefox()
+                N = True
+            elif FC == ('c'):
+                WebVar = selenium.webdriver.Chrome()
+                N = True
+            else:
+                print('Try again')
+    elif YN == ('n'):
+        WebVar = selenium.webdriver.PhantomJS()
+        N = True
     else:
-        EngineChoice = input('Would you like a visual of the bot? (Y/N): ')
-        YN = (EngineChoice.lower())
-        if YN == ('y'):
-            N = True
-            while True:
-                VarChoice = input('Would you like Firefox or Chrome?: (F/C)')
-                FC = (VarChoice.lower())
-                if FC == ('f'):
-                    WebVar = selenium.webdriver.Firefox()
-                    break
-                elif FC == ('c'):
-                    WebVar = selenium.webdriver.Chrome()
-                    break
-                else:
-                    print('Try again')
-        elif YN == ('n'):
-            WebVar = selenium.webdriver.PhantomJS()
-            N = True
-            break
-        else:
-            print('Try again')
+        print('Try again')
 #A while loop to make sure the user enters in a correct character.
 #Allows the user to choose which web driver they want to use.
 
