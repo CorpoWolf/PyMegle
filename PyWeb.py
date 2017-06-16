@@ -1,5 +1,5 @@
 '''
-View the coding live on Twitch @ https://www.twitch.tv/gmangavin and look at the github @ https://github.com/gmangavin/PyScrape
+View the coding live on Twitch @ https://www.twitch.tv/gmangavin and look at the github @ https://github.com/gmangavin/PyWeb
 chromedriver for gui view, phantomjs for ghost view.
 '''
 
@@ -39,4 +39,3 @@ Send = WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1
 Send.send_keys(Interest + ',')
 
 WebVar.find_element_by_xpath('//*[@id="textbtn"]').click()
-print(WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div'))
