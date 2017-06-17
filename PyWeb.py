@@ -6,14 +6,14 @@ chromedriver for gui view, phantomjs for ghost view.
 import selenium.webdriver #Imports module
 import time #Imports time
 
-N = False
+N = False #Used for the bool loop.
 while N == False:
-    EngineChoice = input('Would you like a visual of the bot? (Y/N): ')
-    YN = (EngineChoice.lower())
+    EngineChoice = input('Would you like a visual of the bot? (Y/N): ')#Part one for the web driver choice
+    YN = (EngineChoice.lower())#Prevents capatalization error.
     if YN == ('y'):
         while N == False:
-            VarChoice = input('Would you like Firefox or Chrome?: (F/C)')
-            FC = (VarChoice.lower())
+            VarChoice = input('Would you like Firefox or Chrome?: (F/C)')#Part two for the web driver choice
+            FC = (VarChoice.lower())#Prevents capatalization error.
             if FC == ('f'):
                 WebVar = selenium.webdriver.Firefox()
                 N = True
@@ -33,9 +33,9 @@ while N == False:
 Interest = input("What is a common interest you're looking for?: ")
 WebVar.get('https://www.omegle.com')
 print(WebVar.title)
-WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]').click()
 
-Send = WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]')
-Send.send_keys(Interest + ',')
+WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]').click()#Clicks the area for typing
+Send = WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]')#Creates an input variable for text area.
+Send.send_keys(Interest + ',')#Sends input to text area.
 
-WebVar.find_element_by_xpath('//*[@id="textbtn"]').click()
+WebVar.find_element_by_xpath('//*[@id="textbtn"]').click()#Clicks the 'text' button
