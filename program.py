@@ -1,5 +1,5 @@
 '''
-View the coding live on Twitch @ https://www.twitch.tv/gmangavin and look at the github @ https://github.com/gmangavin/PyWeb
+View the coding live on Twitch @ https://www.twitch.tv/gmangavin and look at the github @ https://github.com/gmangavin/PyMegle
 chromedriver for gui view, phantomjs for ghost view.
 '''
 
