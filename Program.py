@@ -35,7 +35,7 @@ WebVar.get('https://www.omegle.com')
 print(WebVar.title)
 
 WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]').click() #Clicks the area for typing
-Send = WebVar.find_element_by_xpath('//*[@id="topicsettingscontainer"]/div/div[1]/span[2]') #Creates an input variable for text area.
+Send = WebVar.find_element_by_class_name('newtopicinput') #Creates an input variable for text area.
 Send.send_keys(Interest + ',') #Sends input to text area.
 
 WebVar.find_element_by_xpath('//*[@id="textbtn"]').click() #Clicks the 'text' button
@@ -43,5 +43,11 @@ WebVar.find_element_by_xpath('//*[@id="textbtn"]').click() #Clicks the 'text' bu
 Connected = False
 while Connected == False:
     Status = WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div').text #Takes the text info from xpath.
-    print(Status)
-    time.sleep(1) #Waits one second to continue.
+    if Status == ("You're now chatting with a random stranger. Say hi!"):
+        print(Status)
+        time.sleep(1) #Waits one second to continue.
+        print('End of program')
+        Connected = True
+    else:
+        print(Status)
+        time.sleep(1)
