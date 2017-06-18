@@ -10,9 +10,9 @@ N = False #Used for the bool loop.
 while N == False:
     EngineChoice = input('Would you like a visual of the bot? (Y/N): ') #Part one for the web driver choice
     YN = (EngineChoice.lower()) #Prevents capatalization error.
-    if YN == 'y':
+    if YN == ('y'):
         while N == False:
-            VarChoice = input('Would you like Firefox or Chrome?: (F/C)') #Part two for the web driver choice
+            VarChoice = input('Would you like Firefox or Chrome? (F/C): ') #Part two for the web driver choice
             FC = (VarChoice.lower()) #Prevents capatalization error.
             if FC == ('f'):
                 WebVar = selenium.webdriver.Firefox()
