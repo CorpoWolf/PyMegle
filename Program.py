@@ -10,7 +10,7 @@ N = False #Used for the bool loop.
 while N == False:
     EngineChoice = input('Would you like a visual of the bot? (Y/N): ') #Part one for the web driver choice
     YN = (EngineChoice.lower()) #Prevents capatalization error.
-    if YN == ('y'):
+    if YN == 'y':
         while N == False:
             VarChoice = input('Would you like Firefox or Chrome?: (F/C)') #Part two for the web driver choice
             FC = (VarChoice.lower()) #Prevents capatalization error.
@@ -41,12 +41,18 @@ Send.send_keys(Interest + ',') #Sends input to text area.
 WebVar.find_element_by_xpath('//*[@id="textbtn"]').click() #Clicks the 'text' button
 
 StatusNew = ''
-Connected = False
-while Connected == False:
+while True:
     Status = WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div').text #Takes the text info from xpath.
     if StatusNew == (Status):
         time.sleep(1)
     else:
-        StatusNew = str(Status)
-        print(StatusNew)
-        time.sleep(1)
+        StatusNew = Status
+        if StatusNew == str(StatusNew.split(Status)[0]):
+            StatusUpdate = (StatusNew.split(Status)[1])
+            print(StatusUpdate)
+            print('')
+            time.sleep(1)
+        else:
+            print(StatusNew)
+            print('')
+            time.sleep(1)
