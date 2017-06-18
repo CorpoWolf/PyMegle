@@ -40,14 +40,13 @@ Send.send_keys(Interest + ',') #Sends input to text area.
 
 WebVar.find_element_by_xpath('//*[@id="textbtn"]').click() #Clicks the 'text' button
 
+StatusNew = ''
 Connected = False
 while Connected == False:
     Status = WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div').text #Takes the text info from xpath.
-    if Status == ("You're now chatting with a random stranger. Say hi!"):
-        print(Status)
-        time.sleep(1) #Waits one second to continue.
-        print('End of program')
-        Connected = True
+    if StatusNew == (Status):
+        time.sleep(1)
     else:
-        print(Status)
+        StatusNew = str(Status)
+        print(StatusNew)
         time.sleep(1)
