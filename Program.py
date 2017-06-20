@@ -5,6 +5,7 @@ chromedriver for gui view, phantomjs for ghost view.
 
 import selenium.webdriver #Imports module
 import time #Imports time
+import threading #Imports threading, used to have multiple things happen at the same time.
 
 N = False #Used for the bool loop.
 while N == False:
@@ -40,19 +41,29 @@ Send.send_keys(Interest + ',') #Sends input to text area.
 
 WebVar.find_element_by_xpath('//*[@id="textbtn"]').click() #Clicks the 'text' button
 
-StatusNew = ''
-while True:
-    Status = WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div').text #Takes the text info from xpath.
-    if StatusNew == (Status):
-        time.sleep(1)
-    else:
-        StatusNew = Status
-        if StatusNew == str(StatusNew.split(Status)[0]):
-            StatusUpdate = (StatusNew.split(Status)[1])
-            print(StatusUpdate)
-            print('')
+def UserMode(*args):
+    while True:
+        UserM = input('') #Has the user type an interest.
+        Sending = WebVar.find_element_by_class_name('chatmsg') #Takes the class used for user input.
+        Sending.send_keys(UserM)
+        WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[2]/table/tbody/tr/td[3]/div/button').click()
+
+def StatusMode(*args):
+    threading.Thread(target=UserMode).start()
+    StatusNew = None
+    while True:
+        Status = WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div').text #Takes the text info from xpath
+        if StatusNew == (Status):
             time.sleep(1)
+            continue
         else:
-            print(StatusNew)
-            print('')
-            time.sleep(1)
+            StatusNew = Status
+            if Status == str(StatusNew.split(Status)[0]):
+                StatusUpdate = (StatusNew.split(Status)[1])
+                print(StatusUpdate)
+                print('')
+            else:
+                print(StatusNew)
+                print('')
+
+threading.Thread(target=StatusMode).start()
