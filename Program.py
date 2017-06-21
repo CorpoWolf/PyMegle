@@ -17,16 +17,25 @@ while N == False:
             VarChoice = input('Would you like Firefox or Chrome? (F/C): ') #Part two for the web driver choice
             FC = (VarChoice.lower()) #Prevents capatalization error.
             if FC == ('f'):
-                WebVar = selenium.webdriver.Firefox()
-                N = True
+                try:
+                    WebVar = selenium.webdriver.Firefox()
+                    N = True
+                except selenium.common.exceptions.WebDriverException:
+                    print("You don't seem to have this webdriver installed.")
             elif FC == ('c'):
-                WebVar = selenium.webdriver.Chrome()
-                N = True
+                try:
+                    WebVar = selenium.webdriver.Chrome()
+                    N = True
+                except:
+                    print("You don't seem to have this webdriver installed.")
             else:
                 print('Try again')
     elif YN == ('n'):
-        WebVar = selenium.webdriver.PhantomJS()
-        N = True
+        try:
+            WebVar = selenium.webdriver.PhantomJS()
+            N = True
+        except selenium.common.exceptions.WebDriverException:
+                    print("You don't seem to have this webdriver installed.")
     else:
         print('Try again')
 #A while loop to make sure the user enters in a correct character.
