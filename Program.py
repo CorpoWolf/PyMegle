@@ -6,6 +6,7 @@ chromedriver for gui view, phantomjs for ghost view.
 import selenium.webdriver #Imports module
 import time #Imports time
 import threading #Imports threading, used to have multiple things happen at the same time.
+import os #Imports OS
 
 N = False #Used for the bool loop.
 while N == False:
@@ -54,16 +55,11 @@ def StatusMode(*args):
     while True:
         Status = WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[1]/div[1]/div').text #Takes the text info from xpath
         if StatusNew == (Status):
-            time.sleep(1)
             continue
         else:
             StatusNew = Status
-            if Status == str(StatusNew.split(Status)[0]):
-                StatusUpdate = (StatusNew.split(Status)[1])
-                print(StatusUpdate)
-                print('')
-            else:
-                print(StatusNew)
-                print('')
+            os.system('cls')#Refreshes chat.
+            print(StatusNew)
+            print('')
 
 threading.Thread(target=StatusMode).start()
