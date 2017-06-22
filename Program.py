@@ -7,7 +7,6 @@ import selenium.webdriver #Imports module
 import time #Imports time
 import threading #Imports threading, used to have multiple things happen at the same time.
 import os #Imports OS
-import sys
 
 N = False #Used for the bool loop.
 while N == False:
