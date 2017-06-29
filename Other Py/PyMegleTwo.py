@@ -76,10 +76,10 @@ def Connect(*args):
         WebVar.find_element_by_xpath('/html/body/div[7]/div/div/div[2]/table/tbody/tr/td[1]/div/button').click()
         os.system('cls')
         print('Rebooting search.')
-        #threading.Thread(target=StatusMode)._stop()
-        #threading.Thread(target=UserMode)._stop()
+        threading.Thread(target=StatusMode)._stop()
+        threading.Thread(target=UserMode)._stop()
         time.sleep(1)
-        #threading.Thread(target=StatusMode).start()
+        threading.Thread(target=StatusMode).start()
         os.system('cls')
     elif Disconnected == False:
         print("You're still connected.")
